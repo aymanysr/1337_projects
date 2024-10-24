@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneysr <aimaneysr@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 18:59:32 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/23 19:22:56 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/10/24 23:20:20 by aimaneysr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int		ft_isprint(char c);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif 
