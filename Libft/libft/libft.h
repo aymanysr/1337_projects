@@ -6,7 +6,7 @@
 /*   By: aimaneysr <aimaneysr@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 18:59:32 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/24 23:20:20 by aimaneysr        ###   ########.fr       */
+/*   Updated: 2024/10/26 00:52:31 by aimaneysr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
-
+int     ft_toupper(int c);
+int     ft_tolower(int c);
+char    *ft_strchr(const char *s, int c);
 #endif 
