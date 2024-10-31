@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha_test.c                                  :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 19:31:28 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/23 19:52:11 by ayousr           ###   ########.fr       */
+/*   Created: 2024/10/26 21:02:53 by ayousr            #+#    #+#             */
+/*   Updated: 2024/10/28 00:14:59 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	x;
-	int	y;
+	size_t			i;
+	unsigned char	*p_s;
 
-	x = 'A';
-	y = '1';
-
-	printf("(%c) is alphabetic = %d, (%c) isnt alphabtic = %d", 
-		x, ft_isalpha(x), y, ft_isalpha(y));
-	return (0);
+	i = 0;
+	p_s = (unsigned char *)s;
+	if (n > 0)
+	{
+		while (i < n)
+		{
+			if (p_s[i] == (unsigned char)c)
+			{
+				return ((void *)&p_s[i]);
+			}
+			i++;
+		}
+	}
+	return (NULL);
 }
+// 

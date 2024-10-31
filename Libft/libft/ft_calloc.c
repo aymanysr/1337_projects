@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit_test.c                                  :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 18:23:48 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/22 18:54:41 by ayousr           ###   ########.fr       */
+/*   Created: 2024/10/28 19:09:07 by ayousr            #+#    #+#             */
+/*   Updated: 2024/10/28 19:33:55 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int		n;
-	char	c;
+	unsigned char	*tmp;
+	size_t			i;
 
-	n = '5';
-	c = '#';
-	printf("are %i or %c a digit? 1 if true, 0 otherwise\n", n, c);
-	printf("%d\n", ft_isdigit(n));
-	printf("%d\n", ft_isdigit(c));
-	return (0);
+	i = 0;
+	tmp = (unsigned char *)malloc(count * size);
+	if (tmp == NULL)
+		return (NULL);
+	while (tmp[i])
+	{
+		tmp[i] = 0;
+		i++;
+	}
+	return (tmp);
 }
