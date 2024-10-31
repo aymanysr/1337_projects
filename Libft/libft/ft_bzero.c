@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 23:11:26 by aimaneysr         #+#    #+#             */
-/*   Updated: 2024/10/25 20:03:29 by ayousr           ###   ########.fr       */
+/*   Created: 2024/10/23 18:40:41 by ayousr            #+#    #+#             */
+/*   Updated: 2024/10/31 02:39:06 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	if (dstsize != 0)
+	ptr = (unsigned char *) s;
+	while (i < n)
 	{
-		while (src[i] != '\0' && i < (dstsize - 1))
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		ptr[i] = 0;
+		i++;
 	}
-	return (ft_strlen(src));
 }
-
-// int main(void)
-// {
-// 	char			*src;
-// 	char			dest[30];
-// 	unsigned int	size;
-
-// 	size = 20;
-// 	src = "this is a test!";
-// 	printf("%zu\n", ft_strlcpy(dest, src, size));
-// 	printf("%s\n", dest);
-// 	return 0;
-// }

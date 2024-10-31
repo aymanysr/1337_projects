@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 01:12:13 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/28 19:11:13 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/10/31 04:01:43 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 }
 // int main()
 // {
-// 	char haystack[] = "HeWoxllo World!";
-// 	char needle[] = "Wor";
+// 	char haystack[] = "salim";
+// 	char needle[] = "lim";
 // 	size_t	len;
 
-// 	len = 16;
+// 	len = 5;
 // 	printf("MINE: found : %s\n", ft_strnstr(haystack, needle, len));
-// 	printf("OG  : found : %s\n", strnstr(haystack, needle, len));
+// 	// printf("OG  : found : %s\n", strnstr(haystack, needle, len));
 // 	return (0);
 // }

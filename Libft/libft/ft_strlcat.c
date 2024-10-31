@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:16:44 by aimaneysr         #+#    #+#             */
-/*   Updated: 2024/10/25 19:43:57 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/10/31 04:02:02 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 
 	i = 0;
 	j = 0;
-	d_len = strlen(dest);
-	s_len = strlen(src);
+	d_len = ft_strlen(dest);
+	s_len = ft_strlen(src);
 	while (dest[j] != '\0')
 	{
 		j++;
@@ -33,10 +33,22 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 	}
 	while (src[i] != '\0' && i < dstsize - d_len - 1)
 	{
-		dest[i] = src[i];
+		dest[j] = src[i];
 		i++;
 		j++;
 	}
 	dest[j] = '\0';
 	return (d_len + s_len); 
 }
+// int main ()
+// {
+//     char dst[7]  = "world";
+//     char spr[] = "hello";
+//     char tst[7]  = "world";
+//     char tpr[] = "hello";
+//     //ft_strlcat(dst,spr,0);
+//     printf("%zu\n",ft_strlcat(dst,spr, 7));
+//     printf("%s\n",dst);
+//     printf("%zu\n",strlcat(tst,tpr, 7));
+//     printf("%s\n",tst);
+// }

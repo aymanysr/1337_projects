@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit_test.c                                  :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 18:23:48 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/22 18:54:41 by ayousr           ###   ########.fr       */
+/*   Created: 2024/10/25 23:38:44 by aimaneysr         #+#    #+#             */
+/*   Updated: 2024/10/31 03:52:42 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_toupper(int c)
 {
-	int		n;
-	char	c;
-
-	n = '5';
-	c = '#';
-	printf("are %i or %c a digit? 1 if true, 0 otherwise\n", n, c);
-	printf("%d\n", ft_isdigit(n));
-	printf("%d\n", ft_isdigit(c));
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
 }
