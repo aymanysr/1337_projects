@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:16:44 by aimaneysr         #+#    #+#             */
-/*   Updated: 2024/10/31 04:02:02 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/10/31 23:04:37 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 	{
 		j++;
 	}
-	if (dstsize == 0 || dstsize < d_len)
+	if (dstsize == 0 || dstsize <= d_len)
 	{
 		return (s_len + dstsize);
 	}

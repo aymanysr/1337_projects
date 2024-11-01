@@ -6,13 +6,15 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:51:17 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/23 18:49:13 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/10/31 23:36:43 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
-	return (c >= 32 && c <= 126);
+	if (c >= 32 && c <= 126)
+		return (c);
+	return (0);
 }

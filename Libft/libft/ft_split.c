@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:11:42 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/31 01:29:21 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/01 00:35:07 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**ft_split(char const *s, char c)
 	
 	w_count = word_count(s, c);
 	if (!s)
-		return (NULL);		
+		return (NULL);
 	if (!*s)
 	{
 		arr = (char **)malloc(sizeof(char *));
@@ -111,11 +111,11 @@ static	int	word_count(const char *s, char c)
 
 int main(void)
 {
-	char *s = "///hello//there//!";
+	char *s = "/////sssss/sss";
 	char **arr = ft_split(s,'/');
-	
+
 	int i = 0;
-	for(i = 0; i <= 2; i++ )
-		printf("%s",arr[i]);
+	for(i = 0; i <= 4; i++ )
+		printf("%s\n",arr[i]);
 	return (0);
 }
