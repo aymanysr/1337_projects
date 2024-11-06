@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneysr <aimaneysr@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:11:42 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/01 00:35:07 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/01 04:22:13 by aimaneysr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static	int	word_count(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
-	int w_count;
-	char **arr;
-	
+	int		w_count;
+	char	**arr;
+
 	w_count = word_count(s, c);
 	if (!s)
 		return (NULL);
@@ -56,7 +56,6 @@ char	**ft_split(char const *s, char c)
 	arr = (char **)malloc(sizeof(char *) * (w_count + 1));
 	if (!arr)
 		return (NULL);
-
 	
 	int i;
 	int start;
@@ -109,13 +108,13 @@ static	int	word_count(const char *s, char c)
 	return (w_count);
 }
 
-int main(void)
-{
-	char *s = "/////sssss/sss";
-	char **arr = ft_split(s,'/');
+// int main(void)
+// {
+// 	char *s = "/////sssss/sss";
+// 	char **arr = ft_split(s,'/');
 
-	int i = 0;
-	for(i = 0; i <= 4; i++ )
-		printf("%s\n",arr[i]);
-	return (0);
-}
+// 	int i = 0;
+// 	for(i = 0; i <= 4; i++ )
+// 		printf("%s\n",arr[i]);
+// 	return (0);
+// }
