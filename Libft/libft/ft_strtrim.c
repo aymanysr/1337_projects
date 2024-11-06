@@ -6,16 +6,18 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:11:20 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/31 04:24:23 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/02 00:13:31 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+// #include <stdio.h>
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	size_t	f;
-	size_t	l;
+	size_t	start;
+	size_t	end;
+	size_t	len;
 
 	if (!s1)
 		return (NULL);
@@ -23,24 +25,30 @@ char	*ft_strtrim(const char *s1, const char *set)
 		return (ft_strdup(s1));
 	if (!*s1)
 		return (ft_strdup(""));
-	f = 0;
-	l = ft_strlen(s1) - 1;
-	while (s1[f] && ft_strchr(set, s1[f]))
-		f++;
-	if (!s1[f])
+	start = 0;
+	len = ft_strlen(s1);
+	end = len;
+	while (start < len && ft_strchr(set, s1[start]))
+		start++;
+	if (start == len)
 		return (ft_strdup(""));
-	while (ft_strchr(set, s1[l]) && l > f)
-		l--;
-	return (ft_substr(s1, f, (l - f) + 1));
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	return (ft_substr(s1, start, end - start));
 }
 
-// int	main(void)
+// int main()
 // {
-// 	char	*s;
-// 	char	*set;
+// 	char *s1 = "123d";
+// 	char *set = "d";
+// 	char *result = ft_strtrim(s1, set);
+// 	printf("Result: '%s'\n", result); // Expected: "123"
+// 	free(result);
 
-// 	s = "cababaaaMy name is Simoncbbaaabba";
-// 	set = "abc";
-// 	printf("myfunc: %s\n", ft_strtrim(s, set));
-// 	return (0);
+// 	s1 = "d123d";
+// 	result = ft_strtrim(s1, set);
+// 	printf("Result: '%s'\n", result); // Expected: "123"
+// 	free(result);
+
+// 	return 0;
 // }

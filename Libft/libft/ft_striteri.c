@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 15:42:03 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/01 23:02:53 by ayousr           ###   ########.fr       */
+/*   Created: 2024/11/04 15:21:42 by ayousr            #+#    #+#             */
+/*   Updated: 2024/11/04 15:32:24 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	i;
 
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	while (s[i])
 	{
-		if ((unsigned char) s1[i] != (unsigned char) s2[i])
-			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
-		i++;
+		(*f)(i, &s[i]);
+		(i++);
 	}
-	return (0);
 }
+
+// void sample_function(unsigned int i, char *c)
+// {
+//     *c = *c + i;
+// }
 
 // int main()
 // {
-// 	const char *s1 = "salim";
-// 	const char *s2 = "aymen";
+//     char s[] = "abcdef";
 
-// 	printf("%d\n", ft_strncmp(s1,s2,0));
-// 	printf("%d\n", strncmp(s1,s2,0));
+//     printf("Original string: %s\n", s);
+
+//     ft_striteri(s, sample_function);
+
+//     printf("Modified string: %s\n", s);
+
+//     return 0;
 // }

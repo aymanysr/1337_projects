@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 15:42:03 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/01 23:02:53 by ayousr           ###   ########.fr       */
+/*   Created: 2024/11/04 16:06:28 by ayousr            #+#    #+#             */
+/*   Updated: 2024/11/04 16:15:28 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	int	digit;
 
-	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
 	{
-		if ((unsigned char) s1[i] != (unsigned char) s2[i])
-			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
-		i++;
+		write(fd, "-", 1);
+		n = -n;
+		ft_putnbr_fd(n, fd);
 	}
-	return (0);
+	else
+	{
+		if (n > 9)
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+		else
+		{
+			digit = n + 48;
+			write(fd, &digit, 1);
+		}
+	}
 }
-
-// int main()
-// {
-// 	const char *s1 = "salim";
-// 	const char *s2 = "aymen";
-
-// 	printf("%d\n", ft_strncmp(s1,s2,0));
-// 	printf("%d\n", strncmp(s1,s2,0));
-// }
