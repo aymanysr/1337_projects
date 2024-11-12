@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:49:09 by aimaneysr         #+#    #+#             */
-/*   Updated: 2024/10/30 20:22:43 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/10 22:25:44 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-		{
 			return ((char *)&s[i]);
-		}
 		i++;
 	}
 	if (s[i] == (char)c)
-	{
 		return ((char *)&s[i]);
-	}
 	return (NULL);
 }
 

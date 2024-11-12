@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:16:39 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/28 20:49:17 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/10 22:26:18 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_strdup(const char *s1)
 	char	*tmp;
 
 	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	i = 0;
 	if (!tmp)
 		return (NULL);
+	i = 0;
 	while (s1[i])
 	{
 		tmp[i] = s1[i];

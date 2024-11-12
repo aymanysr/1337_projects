@@ -6,31 +6,26 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:11:20 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/02 00:13:31 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/11 00:16:18 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	start;
 	size_t	end;
-	size_t	len;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
-	if (!set)
-		return (ft_strdup(s1));
 	if (!*s1)
 		return (ft_strdup(""));
 	start = 0;
-	len = ft_strlen(s1);
-	end = len;
-	while (start < len && ft_strchr(set, s1[start]))
+	end = ft_strlen(s1);
+	while (start < end && ft_strchr(set, s1[start]))
 		start++;
-	if (start == len)
+	if (start == end)
 		return (ft_strdup(""));
 	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;

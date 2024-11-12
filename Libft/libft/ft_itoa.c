@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:42:27 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/04 14:14:44 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/10 19:12:01 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,12 @@ static char	*preconv_alloc(int len)
 
 // int	main(void)
 // {
-// 	 char	*res;
-// 	 int	n;
+// 	char	*res;
+// 	int		n;
 
-// 	 n = -1337;
-// 	 printf("digit_len : %s\n", ft_itoa(n));
+// 	n = -1337;
+// 	res = ft_itoa(n);
+// 	printf("%s\n", res);
+// 	free (res);
 // 	return (0);
 // }

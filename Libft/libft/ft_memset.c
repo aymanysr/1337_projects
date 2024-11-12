@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:59:05 by ayousr            #+#    #+#             */
-/*   Updated: 2024/10/31 02:38:51 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/10 20:04:38 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *s, int c, size_t len)
 	ptr = (unsigned char *)s;
 	while (i < len)
 	{
-		ptr[i] = c;
+		ptr[i] = (unsigned char)c;
 		i++;
 	}
 	return (s);

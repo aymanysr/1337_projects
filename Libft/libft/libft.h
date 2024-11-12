@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 18:59:32 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/08 23:10:42 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/11 19:53:51 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 
 /* libft funcs */
 

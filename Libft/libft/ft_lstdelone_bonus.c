@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:54:45 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/07 20:45:56 by ayousr           ###   ########.fr       */
+/*   Created: 2024/11/07 20:52:55 by ayousr            #+#    #+#             */
+/*   Updated: 2024/11/10 19:29:31 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_list	*last;
-
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		last = ft_lstlast(*lst);
-		last->next = new;
-	}
+	if (!del || !lst)
+		return ;
+	del(lst->content);
+	free(lst);
 }
 
-// Function to print the list
+// // Function to print the list
 // void	print_list(t_list *lst)
 // {
 // 	while (lst)
@@ -34,6 +29,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 // 		lst = lst->next;
 // 	}
 // 	printf("NULL\n");
+// }
+
+// void	del(void *content)
+// {
+// 	(void)content;
 // }
 // int	main(int ac, char **av)
 // {
@@ -56,6 +56,17 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 // 		ft_lstadd_back(&list, node);
 // 		i++;
 // 	}
+// 	print_list(list);
+// 	while (list)
+// 	{
+// 		t_list	*tmp;
+
+// 		print_list(list);
+// 		tmp = list->next;
+// 		ft_lstdelone(list, del);
+// 		list = tmp;
+// 	}
+// 	printf("List after deleting the nodes:\n");
 // 	print_list(list);
 // 	while (list)
 // 	{

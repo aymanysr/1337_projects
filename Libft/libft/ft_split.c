@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:11:42 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/01 22:50:19 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/11/11 19:31:56 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ static	char	**malloc_array(int w_count)
 
 static int	fill_array(char **arr, const char *s, char c, int w_count)
 {
-	int	i;
-	int	start;
-	int	end;
+	int		i;
+	size_t	start;
+	size_t	end;
 
 	start = 0;
 	i = 0;
