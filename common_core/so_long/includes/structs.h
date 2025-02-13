@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:12:48 by ayousr            #+#    #+#             */
-/*   Updated: 2025/02/05 17:55:05 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/02/12 20:30:13 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,20 @@ typedef struct s_sprite
 	void	*img;
 }				t_sprite;
 
-/*
- * Represents the game map.
- * Contains the grid of tiles, dimensions of the map,
-	and various map properties.
- */
-typedef struct s_map
-{
-	char	**grid;
-	int		height;
-	int		width;
-	int		num_players;
-	int		num_collectibles;
-	int		num_exits;
-	bool	is_valid;
-}				t_map;
 /**
  * Holds the file paths for various game textures.
 */
-typedef struct s_texture_paths
+typedef struct s_textures
 {
-	char	*ground;
-	char	*walls;
-	char	*collectibles;
-	char	*exit_idle;
-	char	*exit_active;
-	char	*player;
-}				t_texture_paths;
-
-/*
- * Represents a 2D point on the screen or map.
- * Used for player position, tile positions, etc.
- */
+	void	*collectibles;
+	void	*walls;
+	void    *player_front;  // Player facing front
+    void    *player_back;   // Player facing back
+    void    *player_left;   // Player facing left
+    void    *player_right;  // Player facing right
+    void    *exit;          // Exit texture
+    void    *background;    // Background texture
+}				t_textures;
 
 typedef struct s_position
 {
@@ -71,41 +53,52 @@ typedef struct s_position
 	int	y;
 }				t_position;
 
-/*
-** t_game_images
-** -------------
-** Holds pointers to the game images created by the MLX library.
-** Fields:
-**   - player: Image for the player.
-**   - wall: Image for the wall.
-**   - collectible: Image for a collectible.
-**   - exit: Image for the exit.
-*/
-typedef struct s_game_images
+
+typedef struct s_image
 {
-	mlx_image_t	*player;
-	mlx_image_t	*wall;
-	mlx_image_t	*collectible;
-	mlx_image_t	*exit;
-}				t_game_images;
+    void    *img_ptr;      // MLX image pointer
+    int     width;         // Image width
+    int     height;        // Image height
+}				t_image;
 
 /*
-** t_game
-** ------
-** Main structure holding all game-related data.
-** Fields:
-**   - mlx: Pointer to the MLX instance.
-**   - map_data: Pointer to the map configuration.
-**   - images: Game images.
-**   - player_pos: Current position of the player.
-**   - textures: Paths to the textures used in the game.
+** Player Structure
+** Tracks player position and direction
 */
+typedef struct s_player
+{
+    int     y_pos;         // Player Y position
+    int     x_pos;         // Player X position
+    char    direction;     // Current facing direction
+}   t_player;
+
+typedef struct s_exit
+{
+    int y_pos;            // Exit Y position
+    int x_pos;            // Exit X position
+}				t_exit;
+
+typedef struct s_mlx
+{
+    void    *mlx_ptr;     // MLX instance pointer
+    void    *win_ptr;     // Window pointer
+}				t_mlx;
+
 typedef struct s_game
 {
-	mlx_t				*mlx;
-	t_map				*map_data;
-	t_game_images		images;
-	t_position			player_pos;
-	t_texture_paths		*textures;
+    char        *map_path;          // Path to map file
+    int         collectibles;       // Number of collectibles
+    int         players;            // Number of players (should be 1)
+    int         exits;              // Number of exits (should be 1)
+    int         map_length;         // Map length
+    int         file_descriptor;    // Map file descriptor
+    char        **map;             // Current game map
+    char        **copied_map;      // Copy for pathfinding
+    int         move_count;        // Number of moves made
+    t_textures  textures;          // Game textures
+    t_image     image;             // Current image
+    t_player    player;            // Player info
+    t_exit      exit;              // Exit info
+    t_mlx       mlx;              // MLX instance
 }				t_game;
 #endif /* STRUCTS_H */
