@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/02/05 18:07:18 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:21:14 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,46 @@ int	is_ber_file(const char *path)
 	return (strcmp(path + len - 4, ".ber") == 0);
 }
 
-// Function to count lines in file (to deterine map height)
-size_t	count_map_lines(const char *path)
+static int check_invalid_line(char *s)
 {
-	int	fd;
-}
-
-// Initialize the map structure
-void	init_map(t_map *map, const char *path)
-{
-	map->path = ft_strdup(path);
-	map->height = 0;
-	map->width = 0;
-	map->grid = NULL;
-	map->tiles = NULL;
-	map->exit_accessible = 0;
-	map->fd = -1;
-	map->accessible_collectibles = 0;
+	int len;
+	int i;
+	len = ft_strlen(s);
+	if (s[len - 1] == '\n' || s[0] == '\n')
+		return (1);
+	i = 1;
+	while (i < len - 1)
+	{
+		if (s[i] == '\n' && s[i + 1] == '\n')
+			return (1);
+		++i;
+	}
+	return (0);
 }
 
 // main function to parse the map
-t_map	parse_map(const char *path)
+int	parse_map(t_game *game)
 {
-	t_map	map;
-
-	if (!path || !is_ber_file(path))
-		return ;
-	map = malloc(sizeof(t_map));
-	if (!map)
-		return ;
-	init_map(map, path);
-	return (map);
+	char	*line;
+	char	*lines;
+	int		fd;
+	
+	lines = NULL;
+	fd = open(game->map_path, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	line = get_next_line(fd);
+	if (!line)
+		return (0);
+	while (line)
+	{
+		lines = ft_gnl_strjoin(lines, line);
+		line = get_next_line(fd);
+	}
+	if (check_invalid_line(lines))
+		return (0);
+	game->map = ft_split(lines, '\n');
+	free(lines);
+	close (fd);
+	return (1);
 }
