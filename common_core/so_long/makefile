@@ -28,7 +28,7 @@ INCLUDES = -I ./lib/MLX42/include -I ./includes
 MLX_DIR		= mlx
 MLX_LINK	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-all: $(NAME)
+all: mlx42 $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_BONUS) $(GNL_OBJ) $(PRINTF_OBJ) $(LIBFT_OBJ)
 	gcc $(CCFLAGS) -fsanitize=address $^ $(MAIN_LDFLAGS) -o $@
@@ -45,10 +45,8 @@ fclean: clean
 re: fclean all
 
 # Build MLX42 library
-clone_mlx42:
-	@git clone https://github.com/codam-coding-college/MLX42.git lib/MLX42
-
-mlx42:
+mlx42: lib/MLX42/build/libmlx42.a
+lib/MLX42/build/libmlx42.a:
 	@echo "Building MLX42 library..."
 	@if [ ! -d "lib/MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git lib/MLX42; fi
 	@cmake -S lib/MLX42 -B lib/MLX42/build -DCMAKE_BUILD_TYPE=Release
