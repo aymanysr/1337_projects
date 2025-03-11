@@ -13,7 +13,9 @@ static void	update_single_enemy(t_enemy *enemy, t_game *game)
 			next_x = enemy->x_pos - 1;
 		else
 			next_x = enemy->x_pos + 1;
-		if (game->map[enemy->y_pos][next_x] != '1')
+		if (game->map[enemy->y_pos][next_x] != '1' &&
+			game->map[enemy->y_pos][next_x] != 'E' &&
+			game->map[enemy->y_pos][next_x] != 'C')
 		{
 			enemy->x_pos = next_x;
 			enemy->steps++;

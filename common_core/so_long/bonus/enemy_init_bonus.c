@@ -55,6 +55,7 @@ static void	fill_enemies(t_game *game)
 				game->enemies[index].direction = 'l';
 				game->enemies[index].steps = 0;  /* Initialize step count */
 				game->enemies[index].img = game->textures.img_enemy_left;
+				game->map[i][j] = '0';
 				index++;
 			}
 			j++;
