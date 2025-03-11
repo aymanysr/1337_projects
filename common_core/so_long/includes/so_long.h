@@ -6,7 +6,7 @@
 /*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:31:49 by ayousr            #+#    #+#             */
-/*   Updated: 2025/02/12 18:29:33 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/03 18:49:06 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 # define SO_LONG_H
 
 /*
-** ============================================================================
 **	Included Libraries
-** ============================================================================
 */
-# include "MLX42/MLX42.h"
 # include "../ft_printf/ft_printf.h"
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
+# include "../bonus/includes_bonus/so_long_bonus.h"
 # include "structs.h"
 # include "fcntl.h" 
 # include <stdlib.h>
@@ -29,57 +27,15 @@
 # include <stdbool.h>
 
 /*
-** ============================================================================
 **	Macros and Constants
-** ============================================================================
 */
 # define MAX_WIDTH   40       /* Maximum width for the map */
 # define MAX_HEIGHT  20       /* Maximum height for the map */
 # define PIXELS      64       /* Pixel size for each tile */
-
-
-// Keyboard Keycodes
-# define K_RIGHT 124
-# define A_RIGHT 2
-# define K_LEFT 123
-# define A_LEFT 0
-# define K_UP 126
-# define A_UP 13
-# define K_DOWN 125
-# define A_DOWN 1
-# define ESC 53
-
-/* Error Codes */
-# define ERROR_MAP_NOT_RECTANGULAR        1
-# define ERROR_MAP_NOT_SURROUNDED_BY_WALLS  2
-# define ERROR_INVALID_NUMBER_OF_PLAYERS    3
-# define ERROR_INVALID_NUMBER_OF_EXITS      4
-# define ERROR_INVALID_NUMBER_OF_COLLECTIBLES 5
-# define ERROR_INVALID_CHARACTER            6
-# define ERROR_NO_VALID_PATH                7
-# define ERROR_MAP_FILE_EMPTY               8
-# define ERROR_FAILED_TO_OPEN_MAP_FILE      9
-# define ERROR_INVALID_FILE_EXTENSION       10
-# define ERROR_SIZE_MAP                     11
-
-// Map components
-# define EMPTY 0
-# define WALL 1
-# define PLAYER 2
-# define COLLECTIBLE 3
-# define EXIT 4
-
-// Keyboard Keycodes
-# define K_RIGHT 124
-# define A_RIGHT 2
-# define K_LEFT 123
-# define A_LEFT 0
-# define K_UP 126
-# define A_UP 13
-# define K_DOWN 125
-# define A_DOWN 1
-# define ESC 53
-
+# define WIN_W 500
+# define WIN_H 500
+# define TILE_SIZE 50
+# define WINDOW_TITLE "so_long"
 
 // String Colors
 # define R "\x1B[31m"
@@ -88,49 +44,98 @@
 # define G "\x1B[32m" 
 # define W "\x1B[37m"
 
-/* Texture file paths */
-// # define PLAYER_IMG_PATH "textures/player.png"
+# define BPP 4 // sizeof(int32_t)
+# define GRAY_R 33
+# define GRAY_G 33
+# define GRAY_B 33
 
-// Window settings
-# define WIN_W 500
-# define WIN_H 500
-# define TILE_SIZE 32
-# define WINDOW_TITLE "so_long"
+/*
+   Game Initialization and Asset Loading (assets_init.c)
+ */
+void  vars_initializer(t_game *game);
+void  mlx_initializer(t_game *game);
+void  load_elements(t_game *game);
+void  load_player(t_game *game);
+void  initialize_game(t_game *game);
 
-// game banner
-void    game_banner(void);
-
-// map functions
+/*
+   Map Parsing (map_parser.c)
+ */
 int     parse_map(t_game *game);
-int     components_checker(t_game *game);
 void    map_size(t_game *game);
 void    map_free(char **map);
+void    cp_map(t_game *game);
+void    fill_map(t_game *game, int y, int x);
+
+/*
+   Map Validation (map_validation.c)
+ */
 int     check_rectangularity(t_game *game);
 int     check_walls(t_game *game);
 int     check_items(t_game *game);
-void    cp_map(t_game *game);
-void	fill_map(t_game *game, int y, int x);
-int     checkunreached(t_game *game);
+int     check_unreached(t_game *game);
+int     components_checker(t_game *game);
+
+/*
+   Map Utilities (map_utils.c)
+ */
+int     check_invalid_line(char *s);
+void    counter(t_game *game, char c, int i, int j);
+
+/*
+   Texture and Player Assets Loading
+   (textures.c & player_assets.c)
+ */
+// Basic Textures (textures.c)
+void    load_basic_textures(t_game *game);
+void    convert_basic_textures_to_images(t_game *game);
+// Player Assets (player_assets.c)
+void	load_all_player_assets(t_game *game);
+void	load_player(t_game *game);
+
+/*
+   Rendering Functions
+   (render_core.c & render_manager.c)
+ */
+// Low-level Rendering (render_core.c)
+int     is_grey(uint8_t r, uint8_t g, uint8_t b);
+void    blit_image(mlx_image_t *dest, mlx_image_t *src, int dx, int dy);
+/* NEW: blit_image_no_skip copies every pixel without skipping grey pixels */
+void    blit_image_no_skip(mlx_image_t *dest, mlx_image_t *src, int dx, int dy);
+void    render_cell(t_game *game, int x, int y);
+void    put_image_on_window(t_game *game, mlx_texture_t *texture, int x, int y);
+// High-level Rendering (render_manager.c)
+void    renderer(t_game *game);
 void    game_renderer(t_game *game);
-void    load_elements(t_game *game);
-void    load_player(t_game *game);
-void    renderer(t_game *game, int x, int y);
+void    update_animation(void *param);
+
+/*
+   Player Control (player_control.c) & (enemy_control.c) & (enemy_init.c)
+ */
+void    player_coordinates(t_game *game, char c);
+void    update_player_position(t_game *game, int x, int y, char direction);
 int     key_hooks(int keycode, t_game *game);
+void    player_moover(mlx_key_data_t key_data, void *param);
 
-// helper
-int	    contains(char *s, char c);
-void    put_image_on_window(t_game *game, void *img, int x, int y);
+/*
+   Cleanup and Error Handling
+   (cleanup.c & error_handling.c)
+ */
+// Cleanup (cleanup.c)
+void    cleanup_game(t_game *game);
+void    free_textures(t_game *game);
+void    free_images(t_game *game);
+void    free_map_data(t_game *game);
+void    terminate_mlx_instance(t_game *game);
+// Error Handling and gracious exits (error_handling.c)
+void    img_destroyer(t_game *game, char *s, char *c);
+void    ft_game_errors(char *s);
+int     contains(char *s, char c);
 
-// mlx initializer
-void	mlx_initializer(t_game *game);
-
-// variables initializer
-void    vars_initializer(t_game *game);
-
-// game errors printer
-void	ft_game_errors(char *s);
-
-// path checking
-int     is_ber_file(const char *path);
-
+// update_game.c
+void update_game(void *param);
+/*
+   Miscellaneous
+ */
+void    game_banner(void);
 #endif
