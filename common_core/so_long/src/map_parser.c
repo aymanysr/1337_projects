@@ -6,42 +6,92 @@
 /*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/02/15 18:21:14 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/04 16:10:43 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structs.h"
 #include "../includes/so_long.h"
 
-// function to check if a file has .ber extension
-
-int	is_ber_file(const char *path)
+void    map_size(t_game *game)
 {
-	size_t	len;
+    int i;
 
-	len = libft_ft_strlen(path);
-	if (len < 4)
-		return (0);
-	return (strcmp(path + len - 4, ".ber") == 0);
+    i = 0;
+    while (game->map[i])
+        ++i ;
+    game->map_length = i;
 }
 
-static int check_invalid_line(char *s)
+void    map_free(char **map)
 {
-	int len;
-	int i;
-	len = ft_strlen(s);
-	if (s[len - 1] == '\n' || s[0] == '\n')
-		return (1);
-	i = 1;
-	while (i < len - 1)
-	{
-		if (s[i] == '\n' && s[i + 1] == '\n')
-			return (1);
-		++i;
-	}
-	return (0);
+    int i;
+    
+    if (!map)
+        return;
+    i = 0;
+    while (map[i] != NULL)
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
 }
 
+void    cp_map(t_game *game)
+{
+    int     i;
+    size_t  j;
+    size_t  len;
+
+    game->copied_map = malloc(sizeof(char *) * (game->map_length + 1));
+    i = 0;
+    while (i < game->map_length)
+    {
+        len = ft_strlen(game->map[i]);
+        j = 0;
+        game->copied_map[i] = malloc(sizeof(char) * (len + 1));
+        while (j < len)
+        {
+            game->copied_map[i][j] = game->map[i][j];
+            j++;
+        }
+        game->copied_map[i][j] = '\0';
+        i++;
+    }
+    game->copied_map[i] = NULL;
+}
+
+void fill_map(t_game *game, int y, int x)
+{
+    int row_length;
+    
+    row_length = ft_strlen(game->copied_map[y]);
+    // Check right
+    if (x + 1 < row_length && game->copied_map[y][x + 1] != '1')
+    {
+        game->copied_map[y][x + 1] = '1';
+        fill_map(game, y, x + 1);
+    }
+    // Check left
+    if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1')
+    {
+        game->copied_map[y][x - 1] = '1';
+        fill_map(game, y, x - 1);
+    }
+    // Check down
+    if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1')
+    {
+        game->copied_map[y + 1][x] = '1';
+        fill_map(game, y + 1, x);
+    }
+    // Check up
+    if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1')
+    {
+        game->copied_map[y - 1][x] = '1';
+        fill_map(game, y - 1, x);
+    }
+}
 // main function to parse the map
 int	parse_map(t_game *game)
 {
@@ -49,17 +99,19 @@ int	parse_map(t_game *game)
 	char	*lines;
 	int		fd;
 	
-	lines = NULL;
 	fd = open(game->map_path, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	line = get_next_line(fd);
 	if (!line)
 		return (0);
-	while (line)
-	{
-		lines = ft_gnl_strjoin(lines, line);
-		line = get_next_line(fd);
+	lines = ft_strdup(line);
+	free(line);
+	while ((line = get_next_line(fd)) != NULL)
+	{	char *tmp = lines;
+		lines = ft_strjoin(lines, line);
+		free(tmp);
+		free(line);
 	}
 	if (check_invalid_line(lines))
 		return (0);
