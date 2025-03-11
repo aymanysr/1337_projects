@@ -22,10 +22,7 @@ void renderer(t_game *game)
         y++;
     }
     /* Update enemy positions, check collisions, and render enemy sprites */
-    update_enemy_patrol(game);
-    
-    /* Display the updated buffer on the window */
-    mlx_image_to_window(game->mlx.mlx_ptr, game->buffer, 0, 0);
+    update_enemy_patrol(game);    
 }
 
 void	game_renderer(t_game *game)

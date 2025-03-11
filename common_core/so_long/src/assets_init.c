@@ -27,12 +27,12 @@ void load_player(t_game *game)
 void	mlx_initializer(t_game *game)
 {
     int rows = game->map_length;
-    int cols = ft_strlen(game->map[0]); // length of the first row
+    int cols = ft_strlen(game->map[0]);
     int width = cols * TILE_SIZE;
     int height = rows * TILE_SIZE;
 
 	if (game->map_length > 15|| ft_strlen(game->map[0]) > 30) {
-    	ft_game_errors("Map dimensions exceed maximum allowed size");
+    	ft_game_errors("Map dimensions exceed screen size");
 	}
 
 	game->mlx.mlx_ptr = mlx_init(width, height, WINDOW_TITLE, true);
@@ -40,7 +40,9 @@ void	mlx_initializer(t_game *game)
 		ft_game_errors("mlx_init failed");
     game->buffer = mlx_new_image(game->mlx.mlx_ptr, width, height);
     if (!game->buffer)
-        ft_game_errors("mlx_new_image failed"); //Error handling is essential
+        ft_game_errors("mlx_new_image failed");
+	/* Display the updated buffer on the window */
+	mlx_image_to_window(game->mlx.mlx_ptr, game->buffer, 0, 0);
 }
 
 

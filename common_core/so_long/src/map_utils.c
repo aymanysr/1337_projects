@@ -1,7 +1,5 @@
 #include "so_long.h"
 
-// map_validation.c => check_items(t_game *game) & check_unreached(t_game *game)
-
 void	counter(t_game *game, char c, int i, int j)
 {
 	if (c == 'P')

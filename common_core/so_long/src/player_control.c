@@ -61,8 +61,6 @@ static void	move_player(t_game *game, int dx, int dy, char direction)
 			update_player_position(game, x, y, direction);
 			game->move_count++;
 			ft_printf("Move count increased to: %d\n", game->move_count); // Debug print
-
-
 		}
 		else if (game->map[y + dy][x + dx] == 'E')
 		{

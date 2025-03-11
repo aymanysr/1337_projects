@@ -6,7 +6,7 @@
 /*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:26:32 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/11 12:16:54 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/11 13:38:06 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	/* Immediately handle invalid arguments */
 	if (ac != 2)
-		ft_game_errors("ERROR\nUsage: ./so_long <map.ber>");
+		ft_game_errors("Usage: ./so_long <map.ber>");
 	
 	/* Allocate and initialize game structure */
 	game = malloc(sizeof(t_game));
