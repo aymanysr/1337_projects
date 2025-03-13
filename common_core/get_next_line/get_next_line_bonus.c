@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:10:36 by ayousr            #+#    #+#             */
-/*   Updated: 2024/12/05 19:15:15 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/12/07 22:14:57 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	*read_fill_line(int fd, char *content, char *buffer)
 			free(content);
 			return (NULL);
 		}
-		else if (is_read <= 0)
+		else if (is_read == 0)
 			break ;
 		buffer[is_read] = '\0';
 		if (!content)
@@ -94,7 +94,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, buffer, 0) < 0)
 	{
 		free(buffer);
-		free(content_left[fd]);
+		free(content_left[fd]); 
 		content_left[fd] = NULL;
 		buffer = NULL;
 		return (NULL);

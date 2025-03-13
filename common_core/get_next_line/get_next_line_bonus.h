@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:04:48 by ayousr            #+#    #+#             */
-/*   Updated: 2024/12/05 19:06:04 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/12/07 22:06:58 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-
-# include <stdio.h>
 
 char	*get_next_line(int fd);
 char	*ft_strdup(const char *s1);

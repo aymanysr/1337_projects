@@ -6,16 +6,12 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:49:40 by ayousr            #+#    #+#             */
-/*   Updated: 2024/12/07 20:57:44 by ayousr           ###   ########.fr       */
+/*   Updated: 2024/12/07 21:54:14 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// static void	read_ln(t_line **cache, int fd);
-// static int	contains_newline(t_line *cache);
-// static void	build_line(t_line *cache, char **line);
-// static void	shift_cache(t_line **cache);
 static char	*ft_strchr(char	*s, int c);
 static char	*read_fill_line(int fd, char *content_left, char *buffer);
 static char	*extract_update(char *buffer_line);
@@ -72,7 +68,7 @@ static char	*read_fill_line(int fd, char *content, char *buffer)
 			free(content);
 			return (NULL);
 		}
-		else if (is_read <= 0)
+		else if (is_read == 0)
 			break ;
 		buffer[is_read] = '\0';
 		if (!content)
