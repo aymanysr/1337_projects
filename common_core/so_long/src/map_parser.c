@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/02/05 18:07:18 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/13 21:50:06 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_map(t_map *map, const char *path)
 }
 
 // main function to parse the map
-t_map	parse_map(const char *path)
+t_map	*parse_map(const char *path)
 {
 	t_map	map;
 
