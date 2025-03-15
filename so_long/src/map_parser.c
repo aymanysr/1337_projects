@@ -6,7 +6,7 @@
 /*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/04 16:10:43 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/15 17:51:18 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,25 @@ void fill_map(t_game *game, int y, int x)
     
     row_length = ft_strlen(game->copied_map[y]);
     // Check right
-    if (x + 1 < row_length && game->copied_map[y][x + 1] != '1')
+    if (x + 1 < row_length && game->copied_map[y][x + 1] != '1' && game->copied_map[y][x + 1] != 'M')
     {
         game->copied_map[y][x + 1] = '1';
         fill_map(game, y, x + 1);
     }
     // Check left
-    if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1')
+    if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1' && game->copied_map[y][x - 1] != 'M')
     {
         game->copied_map[y][x - 1] = '1';
         fill_map(game, y, x - 1);
     }
     // Check down
-    if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1')
+    if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1' && game->copied_map[y + 1][x] != 'M')
     {
         game->copied_map[y + 1][x] = '1';
         fill_map(game, y + 1, x);
     }
     // Check up
-    if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1')
+    if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1' && game->copied_map[y - 1][x] != 'M')
     {
         game->copied_map[y - 1][x] = '1';
         fill_map(game, y - 1, x);
