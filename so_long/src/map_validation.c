@@ -75,7 +75,8 @@ int check_unreached(t_game *game)
     fill_map(game, game->player.y_pos, game->player.x_pos);
     while (i < game->map_length)
     {
-        if (contains(game->copied_map[i], 'E') || contains(game->copied_map[i], 'C'))
+        if (contains(game->copied_map[i], 'E') || contains(game->copied_map[i], 'C')
+                || contains(game->copied_map[i], 'M'))
         {
             map_free(game->copied_map);
             game->copied_map = NULL;
