@@ -8,11 +8,11 @@ void	img_destroyer(t_game *game, char *s, char *c)
 	exit(0);
 }
 
-void	ft_game_errors(char *s)
+void	ft_game_errors(char *s, t_game *game)
 {
-	ft_printf("Error\n");
-	ft_printf("%s\n", s);
-	exit(0);
+	ft_printf("Error\n%s\n", s);
+	cleanup_game(game);
+	exit(EXIT_FAILURE);
 }
 
 int	contains(char *s, char c)

@@ -76,6 +76,6 @@ void	init_enemies(t_game *game)
 		return ;
 	game->enemies = malloc(sizeof(t_enemy) * count);
 	if (!game->enemies)
-		ft_game_errors("Memory allocation error for enemies");
+		ft_game_errors("Memory allocation error for enemies", game);
 	fill_enemies(game);
 }

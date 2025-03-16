@@ -6,7 +6,7 @@
 /*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:31:49 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/03 18:49:06 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/16 12:27:18 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void    free_map_data(t_game *game);
 void    terminate_mlx_instance(t_game *game);
 // Error Handling and gracious exits (error_handling.c)
 void    img_destroyer(t_game *game, char *s, char *c);
-void    ft_game_errors(char *s);
+void    ft_game_errors(char *s, t_game *game);
 int     contains(char *s, char c);
 
 // update_game.c

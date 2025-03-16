@@ -75,8 +75,7 @@ int check_unreached(t_game *game)
     fill_map(game, game->player.y_pos, game->player.x_pos);
     while (i < game->map_length)
     {
-        if (contains(game->copied_map[i], 'E') || contains(game->copied_map[i], 'C')
-                || contains(game->copied_map[i], 'M'))
+        if (contains(game->copied_map[i], 'E') || contains(game->copied_map[i], 'C'))
         {
             map_free(game->copied_map);
             game->copied_map = NULL;
@@ -92,27 +91,15 @@ int check_unreached(t_game *game)
 int components_checker(t_game *game)
 {
     if (!parse_map(game))
-        ft_game_errors("[!!!] Failed to open the map file.");
+        ft_game_errors("[!!!] Failed to open the map file.", game);
     map_size(game);
     if (!check_rectangularity(game))
-    {
-        map_free(game->map);
-        ft_game_errors("[!!!] The map is not rectangular.");
-    }
+        ft_game_errors("[!!!] The map is not rectangular.", game);
     if (!check_walls(game))
-    {
-        map_free(game->map);
-        ft_game_errors("[!!!] The map is not fully surrounded by walls.");
-    }
+        ft_game_errors("[!!!] The map is not fully surrounded by walls.", game);
     if (!check_items(game))
-    {
-        map_free(game->map);
-        ft_game_errors("[!!!] There might be an odd, duplicated or missed character.");
-    }
+        ft_game_errors("[!!!] There might be an odd, duplicated or missed character.", game);
     if (!check_unreached(game))
-    {
-        map_free(game->map);
-        ft_game_errors("[!!!] Invalid path.");
-    }
+        ft_game_errors("[!!!] Invalid path.", game);
     return (1);
 }

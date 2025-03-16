@@ -114,10 +114,11 @@ void free_map_data(t_game *game)
 
 void terminate_mlx_instance(t_game *game)
 {
+    if (!game)
+        return;
+        
     void *temp_mlx = game->mlx.mlx_ptr;
     game->mlx.mlx_ptr = NULL;
     if (temp_mlx)
-    {
         mlx_terminate(temp_mlx);
-    }
 }

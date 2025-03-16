@@ -9,10 +9,10 @@ static void	load_player_asset(t_game *game, t_player_asset asset)
 {
 	asset.xpm[0] = mlx_load_xpm42(asset.normal_path);
 	if (!asset.xpm[0] || asset.xpm[0]->texture.width == 0)
-		ft_game_errors(asset.error_normal);
+		ft_game_errors(asset.error_normal, game);
 	asset.xpm[1] = mlx_load_xpm42(asset.bw_path);
 	if (!asset.xpm[1] || asset.xpm[1]->texture.width == 0)
-		ft_game_errors(asset.error_bw);
+		ft_game_errors(asset.error_bw, game);
 	asset.img[0] = mlx_texture_to_image(game->mlx.mlx_ptr,
 			&asset.xpm[0]->texture);
 	asset.img[1] = mlx_texture_to_image(game->mlx.mlx_ptr,
