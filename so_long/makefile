@@ -11,8 +11,8 @@ else ifeq ($(UNAME_S),Darwin)
             	-framework OpenGL -framework AppKit -ldl -pthread -lm
 endif
 
-SRC = $(addprefix src/, main.c map_parser.c error_handling.c banner.c player_control.c player_assets.c render_manager.c assets_init.c map_validation.c textures.c render_core.c cleanup.c map_utils.c update_game.c)
-BONUS = $(addprefix bonus/, move_count_bonus.c textures_bonus.c enemy_control_bonus.c enemy_init_bonus.c enemy_texture_cleanup_bonus.c) 
+SRC = $(addprefix src/, main.c map_parser.c error_handling.c banner.c player_control.c player_assets.c render_manager.c assets_init.c assets_loader.c map_validation.c textures.c render_core.c cleanup.c map_utils.c update_game.c)
+BONUS = $(addprefix bonus/, move_count_bonus.c textures_bonus.c enemy_control_bonus.c enemy_init_bonus.c enemy_texture_cleanup_bonus.c enemy_ctrl_helper_bonus.c) 
 GNL_SRC = $(addprefix get_next_line/, get_next_line.c get_next_line_utils.c)
 LIBFT_SRC = $(wildcard libft/*.c )
 PRINTF_SRC = $(addprefix ft_printf/, ft_print_percent.c ft_printf_char.c ft_printf_hex_upper.c ft_printf_hex.c ft_printf_int.c ft_printf_pointer.c ft_printf_str.c ft_printf_uint.c ft_printf.c ft_putchar.c ft_printf_strlen.c)
@@ -60,4 +60,4 @@ libft:
 ft_printf:
 	@make --silent -C ft_printf
 
-.PHONY: all clean fclean re mlx42 libft ft_printf gnl
+.PHONY: all clean fclean re mlx42 libft ft_printf get_next_line

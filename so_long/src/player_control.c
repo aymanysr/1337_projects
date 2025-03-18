@@ -1,13 +1,13 @@
 #include "../includes/so_long.h"
 
-void player_coordinates(t_game *game, char c)
+void	player_coordinates(t_game *game, char c)
 {
 	if (c == 'r')
 	{
 		game->player.x_pos++;
 		game->player.direction = 'r';
 	}
-	else if (c  == 'l')
+	else if (c == 'l')
 	{
 		game->player.x_pos--;
 		game->player.direction = 'l';
@@ -60,7 +60,7 @@ static void	move_player(t_game *game, int dx, int dy, char direction)
 				game->collectibles--;
 			update_player_position(game, x, y, direction);
 			game->move_count++;
-			ft_printf("Move count increased to: %d\n", game->move_count); // Debug print
+			ft_printf("Move count increased to: %d\n", game->move_count);
 		}
 		else if (game->map[y + dy][x + dx] == 'E')
 		{
@@ -89,7 +89,7 @@ int	key_hooks(int keycode, t_game *game)
 	else if (keycode == MLX_KEY_ESCAPE)
 		img_destroyer(game, "[.] You have pressed ESC", R);
 	game_renderer(game);
-	return (1);        
+	return (1);
 }
 
 void	player_moover(mlx_key_data_t key_data, void *param)

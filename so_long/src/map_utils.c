@@ -18,10 +18,11 @@ void	counter(t_game *game, char c, int i, int j)
 		game->collectibles += 1;
 }
 
-int check_invalid_line(char *s)
+int	check_invalid_line(char *s)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
+
 	len = ft_strlen(s);
 	if (s[len - 1] == '\n' || s[0] == '\n')
 		return (1);
