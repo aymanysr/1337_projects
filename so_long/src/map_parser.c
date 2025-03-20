@@ -6,16 +6,16 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/17 16:07:44 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/20 17:50:36 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structs.h"
 #include "../includes/so_long.h"
 
-void    map_size(t_game *game)
+void	map_size(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (game->map[i])
@@ -23,12 +23,12 @@ void    map_size(t_game *game)
 	game->map_length = i;
 }
 
-void    map_free(char **map)
+void	map_free(char **map)
 {
-	int i;
-	
+	int	i;
+
 	if (!map)
-		return;
+		return ;
 	i = 0;
 	while (map[i] != NULL)
 	{
@@ -38,11 +38,11 @@ void    map_free(char **map)
 	free(map);
 }
 
-void    cp_map(t_game *game)
+void	cp_map(t_game *game)
 {
-	int     i;
-	size_t  j;
-	size_t  len;
+	int		i;
+	size_t	j;
+	size_t	len;
 
 	game->copied_map = malloc(sizeof(char *) * (game->map_length + 1));
 	i = 0;
@@ -62,31 +62,31 @@ void    cp_map(t_game *game)
 	game->copied_map[i] = NULL;
 }
 
-void fill_map(t_game *game, int y, int x)
+void	fill_map(t_game *game, int y, int x)
 {
-	int row_length;
-	
+	int	row_length;
+
 	row_length = ft_strlen(game->copied_map[y]);
-	// Check right
-	if (x + 1 < row_length && game->copied_map[y][x + 1] != '1' && game->copied_map[y][x + 1] != 'M')
+	if (x + 1 < row_length && game->copied_map[y][x + 1] != '1' &&
+		game->copied_map[y][x + 1] != 'M')
 	{
 		game->copied_map[y][x + 1] = '1';
 		fill_map(game, y, x + 1);
 	}
-	// Check left
-	if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1' && game->copied_map[y][x - 1] != 'M')
+	if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1' &&
+		game->copied_map[y][x - 1] != 'M')
 	{
 		game->copied_map[y][x - 1] = '1';
 		fill_map(game, y, x - 1);
 	}
-	// Check down
-	if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1' && game->copied_map[y + 1][x] != 'M')
+	if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1'
+		&& game->copied_map[y + 1][x] != 'M')
 	{
 		game->copied_map[y + 1][x] = '1';
 		fill_map(game, y + 1, x);
 	}
-	// Check up
-	if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1' && game->copied_map[y - 1][x] != 'M')
+	if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1'
+		&& game->copied_map[y - 1][x] != 'M')
 	{
 		game->copied_map[y - 1][x] = '1';
 		fill_map(game, y - 1, x);

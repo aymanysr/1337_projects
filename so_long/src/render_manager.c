@@ -1,15 +1,12 @@
 #include "../includes/so_long.h"
 
-void renderer(t_game *game)
+void	renderer(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	/* Clear the buffer */
-	ft_memset(game->buffer->pixels, 0xFF, 
+	ft_memset(game->buffer->pixels, 0xFF,
 		game->buffer->width * game->buffer->height * BPP);
-	
-	/* Render each cell of the map (which draws background, walls, collectibles, exit, and player) */
 	y = 0;
 	while (game->map[y])
 	{
@@ -21,8 +18,7 @@ void renderer(t_game *game)
 		}
 		y++;
 	}
-	/* Update enemy positions, check collisions, and render enemy sprites */
-	update_enemy_patrol(game);    
+	update_enemy_patrol(game);
 }
 
 void	game_renderer(t_game *game)
@@ -44,4 +40,3 @@ void	update_animation(void *param)
 		counter = 0;
 	}
 }
-

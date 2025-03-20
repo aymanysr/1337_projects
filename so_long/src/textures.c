@@ -20,19 +20,19 @@ void	load_basic_textures(t_game *game)
 void	convert_basic_textures_to_images(t_game *game)
 {
 	game->textures.img_collectibles = mlx_texture_to_image(
-		game->mlx.mlx_ptr, &game->textures.xpm_collectibles->texture);
+			game->mlx.mlx_ptr, &game->textures.xpm_collectibles->texture);
 	if (!game->textures.img_collectibles)
 		ft_game_errors("failed to create collectible image", game);
 	game->textures.img_walls = mlx_texture_to_image(
-		game->mlx.mlx_ptr, &game->textures.xpm_walls->texture);
-		if (!game->textures.img_walls)
+			game->mlx.mlx_ptr, &game->textures.xpm_walls->texture);
+	if (!game->textures.img_walls)
 		ft_game_errors("failed to create wall image", game);
 	game->textures.img_background = mlx_texture_to_image(
-		game->mlx.mlx_ptr, &game->textures.xpm_background->texture);
-		if (!game->textures.img_background)
+			game->mlx.mlx_ptr, &game->textures.xpm_background->texture);
+	if (!game->textures.img_background)
 		ft_game_errors("failed to create background image", game);
 	game->textures.img_exit = mlx_texture_to_image(
-		game->mlx.mlx_ptr, &game->textures.xpm_exit->texture);
-		if (!game->textures.img_exit)
+			game->mlx.mlx_ptr, &game->textures.xpm_exit->texture);
+	if (!game->textures.img_exit)
 		ft_game_errors("failed to create exit image", game);
 }

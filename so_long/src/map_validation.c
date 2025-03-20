@@ -1,16 +1,16 @@
 #include "../includes/so_long.h"
 
-int check_rectangularity(t_game *game)
+int	check_rectangularity(t_game *game)
 {
-	char    *line;
-	int     i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	line = game->map[i];
 	++i;
 	while (i < game->map_length)
 	{
-		if(!(ft_gnl_strlen(line) == ft_gnl_strlen(game->map[i])))
+		if (!(ft_gnl_strlen(line) == ft_gnl_strlen(game->map[i])))
 			return (0);
 		i++;
 	}
@@ -19,11 +19,11 @@ int check_rectangularity(t_game *game)
 	return (1);
 }
 
-int check_walls(t_game *game)
+int	check_walls(t_game *game)
 {
-	int i;
-	int j;
-	int len;
+	int	i;
+	int	j;
+	int	len;
 
 	i = 0;
 	while (game->map[0][i] && game->map[game->map_length - 1][i])
@@ -66,16 +66,17 @@ int	check_items(t_game *game)
 	return (0);
 }
 
-int check_unreached(t_game *game)
+int	check_unreached(t_game *game)
 {
-	int     i;
+	int	i;
 
 	i = 0;
 	cp_map(game);
 	fill_map(game, game->player.y_pos, game->player.x_pos);
 	while (i < game->map_length)
 	{
-		if (contains(game->copied_map[i], 'E') || contains(game->copied_map[i], 'C'))
+		if (contains(game->copied_map[i], 'E')
+			|| contains(game->copied_map[i], 'C'))
 		{
 			map_free(game->copied_map);
 			game->copied_map = NULL;
@@ -88,7 +89,7 @@ int check_unreached(t_game *game)
 	return (1);
 }
 
-int components_checker(t_game *game)
+int	components_checker(t_game *game)
 {
 	if (!parse_map(game))
 		ft_game_errors("[!!!] Failed to open the map file.", game);
@@ -98,7 +99,8 @@ int components_checker(t_game *game)
 	if (!check_walls(game))
 		ft_game_errors("[!!!] The map is not fully surrounded by walls.", game);
 	if (!check_items(game))
-		ft_game_errors("[!!!] There might be an odd, duplicated or missed character.", game);
+		ft_game_errors("[!!!] There might be an odd, dup or missed char.",
+			game);
 	if (!check_unreached(game))
 		ft_game_errors("[!!!] Invalid path.", game);
 	return (1);

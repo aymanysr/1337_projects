@@ -42,5 +42,7 @@ void    free_enemy_texture(t_game *game);
 void    load_enemy_textures(t_game *game);
 void	display_move_count(t_game *game);
 void    vars_initializer_bonus(t_game *game);
+int is_valid_enemy_move(t_game *game, int y, int x);
+void reverse_enemy_direction(t_enemy *enemy);
 
 #endif
