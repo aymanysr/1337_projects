@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/15 17:51:18 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/17 16:07:44 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,82 +15,82 @@
 
 void    map_size(t_game *game)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (game->map[i])
-        ++i ;
-    game->map_length = i;
+	i = 0;
+	while (game->map[i])
+		++i ;
+	game->map_length = i;
 }
 
 void    map_free(char **map)
 {
-    int i;
-    
-    if (!map)
-        return;
-    i = 0;
-    while (map[i] != NULL)
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	int i;
+	
+	if (!map)
+		return;
+	i = 0;
+	while (map[i] != NULL)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 void    cp_map(t_game *game)
 {
-    int     i;
-    size_t  j;
-    size_t  len;
+	int     i;
+	size_t  j;
+	size_t  len;
 
-    game->copied_map = malloc(sizeof(char *) * (game->map_length + 1));
-    i = 0;
-    while (i < game->map_length)
-    {
-        len = ft_strlen(game->map[i]);
-        j = 0;
-        game->copied_map[i] = malloc(sizeof(char) * (len + 1));
-        while (j < len)
-        {
-            game->copied_map[i][j] = game->map[i][j];
-            j++;
-        }
-        game->copied_map[i][j] = '\0';
-        i++;
-    }
-    game->copied_map[i] = NULL;
+	game->copied_map = malloc(sizeof(char *) * (game->map_length + 1));
+	i = 0;
+	while (i < game->map_length)
+	{
+		len = ft_strlen(game->map[i]);
+		j = 0;
+		game->copied_map[i] = malloc(sizeof(char) * (len + 1));
+		while (j < len)
+		{
+			game->copied_map[i][j] = game->map[i][j];
+			j++;
+		}
+		game->copied_map[i][j] = '\0';
+		i++;
+	}
+	game->copied_map[i] = NULL;
 }
 
 void fill_map(t_game *game, int y, int x)
 {
-    int row_length;
-    
-    row_length = ft_strlen(game->copied_map[y]);
-    // Check right
-    if (x + 1 < row_length && game->copied_map[y][x + 1] != '1' && game->copied_map[y][x + 1] != 'M')
-    {
-        game->copied_map[y][x + 1] = '1';
-        fill_map(game, y, x + 1);
-    }
-    // Check left
-    if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1' && game->copied_map[y][x - 1] != 'M')
-    {
-        game->copied_map[y][x - 1] = '1';
-        fill_map(game, y, x - 1);
-    }
-    // Check down
-    if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1' && game->copied_map[y + 1][x] != 'M')
-    {
-        game->copied_map[y + 1][x] = '1';
-        fill_map(game, y + 1, x);
-    }
-    // Check up
-    if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1' && game->copied_map[y - 1][x] != 'M')
-    {
-        game->copied_map[y - 1][x] = '1';
-        fill_map(game, y - 1, x);
-    }
+	int row_length;
+	
+	row_length = ft_strlen(game->copied_map[y]);
+	// Check right
+	if (x + 1 < row_length && game->copied_map[y][x + 1] != '1' && game->copied_map[y][x + 1] != 'M')
+	{
+		game->copied_map[y][x + 1] = '1';
+		fill_map(game, y, x + 1);
+	}
+	// Check left
+	if (x - 1 >= 0 && game->copied_map[y][x - 1] != '1' && game->copied_map[y][x - 1] != 'M')
+	{
+		game->copied_map[y][x - 1] = '1';
+		fill_map(game, y, x - 1);
+	}
+	// Check down
+	if (y + 1 < game->map_length && game->copied_map[y + 1][x] != '1' && game->copied_map[y + 1][x] != 'M')
+	{
+		game->copied_map[y + 1][x] = '1';
+		fill_map(game, y + 1, x);
+	}
+	// Check up
+	if (y - 1 >= 0 && game->copied_map[y - 1][x] != '1' && game->copied_map[y - 1][x] != 'M')
+	{
+		game->copied_map[y - 1][x] = '1';
+		fill_map(game, y - 1, x);
+	}
 }
 // main function to parse the map
 int	parse_map(t_game *game)
