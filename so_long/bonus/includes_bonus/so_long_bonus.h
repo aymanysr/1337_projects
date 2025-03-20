@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 18:24:13 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/20 18:25:02 by ayousr           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
@@ -36,13 +48,13 @@
 # define GRAY_G 33
 # define GRAY_B 33
 
-void    update_enemy_patrol(void *param);
+void	update_enemy_patrol(void *param);
 void	init_enemies(t_game *game);
-void    free_enemy_texture(t_game *game);
-void    load_enemy_textures(t_game *game);
+void	free_enemy_texture(t_game *game);
+void	load_enemy_textures(t_game *game);
 void	display_move_count(t_game *game);
-void    vars_initializer_bonus(t_game *game);
-int is_valid_enemy_move(t_game *game, int y, int x);
-void reverse_enemy_direction(t_enemy *enemy);
+void	vars_initializer_bonus(t_game *game);
+int		is_valid_enemy_move(t_game *game, int y, int x);
+void	reverse_enemy_direction(t_enemy *enemy);
 
 #endif

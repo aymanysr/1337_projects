@@ -1,14 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 17:54:22 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/20 18:09:24 by ayousr           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	load_basic_textures(t_game *game)
 {
-	game->textures.xpm_collectibles = mlx_load_xpm42("./textures/collectible1.xpm42");
+	game->textures.xpm_collectibles = mlx_load_xpm42(
+			"./textures/collectible1.xpm42");
 	if (game->textures.xpm_collectibles)
 		game->textures.collectibles = &game->textures.xpm_collectibles->texture;
 	game->textures.xpm_walls = mlx_load_xpm42("./textures/wall.xpm42");
 	if (game->textures.xpm_walls)
 		game->textures.walls = &game->textures.xpm_walls->texture;
-	game->textures.xpm_background = mlx_load_xpm42("./textures/background.xpm42");
+	game->textures.xpm_background = mlx_load_xpm42(
+			"./textures/background.xpm42");
 	if (game->textures.xpm_background)
 		game->textures.background = &game->textures.xpm_background->texture;
 	game->textures.xpm_exit = mlx_load_xpm42("./textures/exit.xpm42");

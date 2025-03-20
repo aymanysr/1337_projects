@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy_init_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 18:21:20 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/20 18:21:48 by ayousr           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-void    vars_initializer_bonus(t_game *game)
+void	vars_initializer_bonus(t_game *game)
 {
 	game->textures.xpm_enemy_left = NULL;
 	game->textures.xpm_enemy_right = NULL;
@@ -53,7 +65,7 @@ static void	fill_enemies(t_game *game)
 				game->enemies[index].x_pos = j;
 				game->enemies[index].y_pos = i;
 				game->enemies[index].direction = 'l';
-				game->enemies[index].steps = 0;  /* Initialize step count */
+				game->enemies[index].steps = 0;
 				game->enemies[index].img = game->textures.img_enemy_left;
 				game->map[i][j] = '0';
 				index++;
@@ -64,8 +76,6 @@ static void	fill_enemies(t_game *game)
 	}
 }
 
-
-/* Public function: Initializes enemy patrols by counting and filling the enemy array. */
 void	init_enemies(t_game *game)
 {
 	int	count;

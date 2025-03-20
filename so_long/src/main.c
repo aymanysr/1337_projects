@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:26:32 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/16 12:30:59 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/20 17:58:52 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ int	main(int ac, char **av)
 	cleanup_game(game);
 	return (0);
 }
-

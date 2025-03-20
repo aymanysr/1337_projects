@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_core.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 17:54:14 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/20 18:10:24 by ayousr           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	blit_image_no_skip(mlx_image_t *dest, mlx_image_t *src, int dx, int dy)
@@ -77,9 +89,6 @@ void	blit_image(mlx_image_t *dest, mlx_image_t *src, int dx, int dy)
 		y++;
 	}
 }
-
-
-
 
 // Helper function to render one cell
 void	render_cell(t_game *game, int x, int y)

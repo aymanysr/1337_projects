@@ -6,7 +6,7 @@
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/20 17:50:36 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/20 18:06:33 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,15 @@ void	fill_map(t_game *game, int y, int x)
 		fill_map(game, y - 1, x);
 	}
 }
+
 // main function to parse the map
 int	parse_map(t_game *game)
 {
 	char	*line;
 	char	*lines;
 	int		fd;
-	
+	char	*tmp;
+
 	fd = open(game->map_path, O_RDONLY);
 	if (fd < 0)
 		return (0);
@@ -107,8 +109,10 @@ int	parse_map(t_game *game)
 		return (0);
 	lines = ft_strdup(line);
 	free(line);
-	while ((line = get_next_line(fd)) != NULL)
-	{	char *tmp = lines;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		tmp = lines;
 		lines = ft_strjoin(lines, line);
 		free(tmp);
 		free(line);

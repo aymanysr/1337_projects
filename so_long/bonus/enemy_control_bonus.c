@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy_control_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 18:20:03 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/20 18:20:15 by ayousr           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 /* Helper: update a single enemy's position and step count.
@@ -5,7 +17,7 @@
    Otherwise, it resets the step count and reverses direction. */
 static void	update_single_enemy(t_enemy *enemy, t_game *game)
 {
-	int next_x;
+	int	next_x;
 
 	if (enemy->steps >= 2)
 	{
@@ -78,7 +90,6 @@ static void	render_enemies(t_game *game)
 		i++;
 	}
 }
-
 
 /* Public function: updates enemy patrols */
 void	update_enemy_patrol(void *param)

@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 17:55:08 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/20 17:58:15 by ayousr           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-void cleanup_game(t_game *game)
+void	cleanup_game(t_game *game)
 {
 	static int	already_called = 0;
 
 	if (!game || already_called)
 		return ;
-
 	already_called = 1;
 	free_textures(game);
 	free_images(game);
@@ -47,7 +58,7 @@ static void	free_player_horizontal_textures(t_game *game)
 }
 
 /* Helper to free player front/back animations */
-static void free_player_vertical_textures(t_game *game)
+static void	free_player_vertical_textures(t_game *game)
 {
 	if (game->textures.xpm_player_front[0])
 	{
@@ -96,14 +107,14 @@ static void	free_environment_textures(t_game *game)
 	}
 }
 
-void free_textures(t_game *game)
+void	free_textures(t_game *game)
 {
 	free_player_horizontal_textures(game);
 	free_player_vertical_textures(game);
 	free_environment_textures(game);
 }
 
-void free_images(t_game *game)
+void	free_images(t_game *game)
 {
 	if (game->move_text_img && game->mlx.mlx_ptr)
 	{
