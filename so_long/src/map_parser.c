@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ayousr <ayousr@student.42.fr>			    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:23:23 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/20 18:06:33 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:21:34 by ayousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int	parse_map(t_game *game)
 		lines = ft_strjoin(lines, line);
 		free(tmp);
 		free(line);
+		line = get_next_line(fd);
 	}
 	if (check_invalid_line(lines))
 		return (0);
