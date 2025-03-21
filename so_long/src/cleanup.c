@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:55:08 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/20 17:58:15 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:39:58 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,81 +30,6 @@ void	cleanup_game(t_game *game)
 	}
 	terminate_mlx_instance(game);
 	free(game);
-}
-
-/* Helper to free player right/left animations */
-static void	free_player_horizontal_textures(t_game *game)
-{
-	if (game->textures.xpm_player_right[0])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_right[0]);
-		game->textures.xpm_player_right[0] = NULL;
-	}
-	if (game->textures.xpm_player_right[1])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_right[1]);
-		game->textures.xpm_player_right[1] = NULL;
-	}
-	if (game->textures.xpm_player_left[0])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_left[0]);
-		game->textures.xpm_player_left[0] = NULL;
-	}
-	if (game->textures.xpm_player_left[1])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_left[1]);
-		game->textures.xpm_player_left[1] = NULL;
-	}
-}
-
-/* Helper to free player front/back animations */
-static void	free_player_vertical_textures(t_game *game)
-{
-	if (game->textures.xpm_player_front[0])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_front[0]);
-		game->textures.xpm_player_front[0] = NULL;
-	}
-	if (game->textures.xpm_player_front[1])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_front[1]);
-		game->textures.xpm_player_front[1] = NULL;
-	}
-	if (game->textures.xpm_player_back[0])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_back[0]);
-		game->textures.xpm_player_back[0] = NULL;
-	}
-	if (game->textures.xpm_player_back[1])
-	{
-		mlx_delete_xpm42(game->textures.xpm_player_back[1]);
-		game->textures.xpm_player_back[1] = NULL;
-	}
-}
-
-/* Helper to free environment textures */
-static void	free_environment_textures(t_game *game)
-{
-	if (game->textures.xpm_collectibles)
-	{
-		mlx_delete_xpm42(game->textures.xpm_collectibles);
-		game->textures.xpm_collectibles = NULL;
-	}
-	if (game->textures.xpm_walls)
-	{
-		mlx_delete_xpm42(game->textures.xpm_walls);
-		game->textures.xpm_walls = NULL;
-	}
-	if (game->textures.xpm_background)
-	{
-		mlx_delete_xpm42(game->textures.xpm_background);
-		game->textures.xpm_background = NULL;
-	}
-	if (game->textures.xpm_exit)
-	{
-		mlx_delete_xpm42(game->textures.xpm_exit);
-		game->textures.xpm_exit = NULL;
-	}
 }
 
 void	free_textures(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:12:48 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/16 12:01:57 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/21 02:16:25 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 ** Enemy Patrol Structure
 ** Represents an enemy that moves horizontally.
 */
+
+typedef struct s_offset
+{
+	int	x;
+	int	y;
+}				t_offset;
+
 typedef struct s_enemy
 {
 	int				x_pos;
@@ -67,7 +74,7 @@ typedef struct s_textures
 	mlx_image_t		*player_right_img[2];
 
 	mlx_texture_t	*player_left[2];
-	xpm_t			*xpm_player_left[2]; 
+	xpm_t			*xpm_player_left[2];
 	mlx_image_t		*player_left_img[2];
 
 	mlx_texture_t	*enemy_left;
@@ -100,12 +107,11 @@ typedef struct s_position
 	int	y;
 }				t_position;
 
-
 typedef struct s_image
 {
-	void    *img_ptr;      // MLX image pointer
-	int     width;         // Image width
-	int     height;        // Image height
+	void	*img_ptr;// MLX image pointer
+	int		width;// Image width
+	int		height;// Image height
 }				t_image;
 
 /*
@@ -114,43 +120,43 @@ typedef struct s_image
 */
 typedef struct s_player
 {
-	int     y_pos;         // Player Y position
-	int     x_pos;         // Player X position
-	char    direction;     // Current facing direction
-}   t_player;
+	int		y_pos;// Player Y position
+	int		x_pos;// Player X position
+	char	direction;// Current facing direction
+}				t_player;
 
 typedef struct s_exit
 {
-	int y_pos;            // Exit Y position
-	int x_pos;            // Exit X position
+	int	y_pos;// Exit Y position
+	int	x_pos;// Exit X position
 }				t_exit;
 
 typedef struct s_mlx
 {
-	void    *mlx_ptr;     // MLX instance pointer
-	void    *win_ptr;     // Window pointer
+	void	*mlx_ptr;// MLX instance pointer
+	void	*win_ptr;// Window pointer
 }				t_mlx;
 
 typedef struct s_game
 {
-	char        *map_path;          // Path to map file
-	int         collectibles;       // Number of collectibles
-	int         players;            // Number of players (should be 1)
-	int         exits;              // Number of exits (should be 1)
-	int         map_length;         // Map length
-	int         file_descriptor;    // Map file descriptor
-	char        **map;             // Current game map
-	char        **copied_map;      // Copy for pathfinding
-	int         move_count;        // Number of moves made
-	int         animation_frame;    // This will be used to cycle through frames
-	mlx_image_t *move_text_img;
-	mlx_image_t *buffer;
-	t_textures  textures;          // Game textures
-	t_image     image;             // Current image
-	t_player    player;            // Player info
-	t_exit      exit;              // Exit info
-	t_mlx       mlx;              // MLX instance
-	t_enemy     *enemies;		/* Dynamic array of enemy patrols */
-	int         enemy_count;
+	char		*map_path;// Path to map file
+	int			collectibles;// Number of collectibles
+	int			players;// Number of players (should be 1)
+	int			exits;// Number of exits (should be 1)
+	int			map_length;// Map length
+	int			file_descriptor;// Map file descriptor
+	char		**map;// Current game map
+	char		**copied_map;// Copy for pathfinding
+	int			move_count;// Number of moves made
+	int			animation_frame;// This will be used to cycle through frames
+	mlx_image_t	*move_text_img;
+	mlx_image_t	*buffer;
+	t_textures	textures;// Game textures
+	t_image		image;// Current image
+	t_player	player;// Player info
+	t_exit		exit;// Exit info
+	t_mlx		mlx;/* MLX instance */
+	t_enemy		*enemies;		/* Dynamic array of enemy patrols */
+	int			enemy_count;
 }				t_game;
 #endif /* STRUCTS_H */

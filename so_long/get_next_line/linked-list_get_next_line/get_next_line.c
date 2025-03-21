@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:49:40 by ayousr            #+#    #+#             */
-/*   Updated: 2024/12/05 19:16:24 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/21 02:06:13 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,4 +166,3 @@ char	*get_next_line(int fd)
 // 	close(fd);
 // 	return (0);
 // }
-

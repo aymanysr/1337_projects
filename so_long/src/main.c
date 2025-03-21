@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:26:32 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/20 17:58:52 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/21 01:53:39 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	load_enemy_textures(game);
 	init_enemies(game);
 	initialize_game(game);
-	mlx_key_hook(game->mlx.mlx_ptr, player_moover, game);
+	mlx_key_hook(game->mlx.mlx_ptr, player_controller, game);
 	mlx_loop_hook(game->mlx.mlx_ptr, update_game, game);
 	mlx_loop(game->mlx.mlx_ptr);
 	cleanup_game(game);

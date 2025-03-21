@@ -11,7 +11,7 @@ else ifeq ($(UNAME_S),Darwin)
             	-framework OpenGL -framework AppKit -ldl -pthread -lm
 endif
 
-SRC = $(addprefix src/, main.c map_parser.c error_handling.c banner.c player_control.c player_assets.c render_manager.c assets_init.c assets_loader.c map_validation.c textures.c render_core.c cleanup.c map_utils.c update_game.c)
+SRC = $(addprefix src/, main.c map_parser.c error_handling.c banner.c player_control.c player_assets.c render_manager.c assets_init.c assets_loader.c map_validation.c textures.c render_core.c cleanup.c cleanup_utils.c map_utils.c update_game.c render_utils.c player_pos_updater.c player_mover.c)
 BONUS = $(addprefix bonus/, move_count_bonus.c textures_bonus.c enemy_control_bonus.c enemy_init_bonus.c enemy_texture_cleanup_bonus.c enemy_ctrl_helper_bonus.c) 
 GNL_SRC = $(addprefix get_next_line/, get_next_line.c get_next_line_utils.c)
 LIBFT_SRC = $(wildcard libft/*.c )

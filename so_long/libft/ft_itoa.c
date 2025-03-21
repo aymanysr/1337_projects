@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:42:27 by ayousr            #+#    #+#             */
-/*   Updated: 2024/11/10 19:12:01 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/21 02:06:48 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	d_len(long nbr)
 	while (nbr != 0)
 	{
 		nbr /= 10;
-		count++; 
+		count++;
 	}
 	return (count);
 }

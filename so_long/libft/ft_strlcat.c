@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:16:44 by aimaneysr         #+#    #+#             */
-/*   Updated: 2024/11/10 23:40:51 by ayousr           ###   ########.fr       */
+/*   Updated: 2025/03/21 02:06:57 by aimaneyousr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 		i++;
 	}
 	dest[d_len + i] = '\0';
-	return (d_len + s_len); 
+	return (d_len + s_len);
 }
+
 // int main ()
 // {
 // 	char dst[]  = "world";
