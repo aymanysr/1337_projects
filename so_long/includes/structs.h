@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:12:48 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/21 02:16:25 by aimaneyousr      ###   ########.fr       */
+/*   Updated: 2025/03/22 00:07:51 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ typedef struct s_enemy
 {
 	int				x_pos;
 	int				y_pos;
-	char			direction;/* 'l' for left, 'r' for right */
+	char			direction;
 	mlx_image_t		*img;
-	int				steps;/* Counts how many cells moved in current direction */
+	int				steps;
 }					t_enemy;
 
 typedef struct s_textures
@@ -92,13 +92,13 @@ typedef struct s_textures
  */
 typedef struct s_player_asset
 {
-	xpm_t			**xpm;// Array of two xpm pointers (normal and bw).
-	mlx_image_t		**img;// Array of two images.
-	mlx_texture_t	**texture;// Array of two texture pointers.
-	char			*normal_path;// File path for normal asset.
-	char			*bw_path;// File path for bw asset.
-	char			*error_normal;// Error message for normal asset.
-	char			*error_bw;// Error message for bw asset.
+	xpm_t			**xpm;
+	mlx_image_t		**img;
+	mlx_texture_t	**texture;
+	char			*normal_path;
+	char			*bw_path;
+	char			*error_normal;
+	char			*error_bw;
 }				t_player_asset;
 
 typedef struct s_position
@@ -109,9 +109,9 @@ typedef struct s_position
 
 typedef struct s_image
 {
-	void	*img_ptr;// MLX image pointer
-	int		width;// Image width
-	int		height;// Image height
+	void	*img_ptr;
+	int		width;
+	int		height;
 }				t_image;
 
 /*
@@ -120,43 +120,43 @@ typedef struct s_image
 */
 typedef struct s_player
 {
-	int		y_pos;// Player Y position
-	int		x_pos;// Player X position
-	char	direction;// Current facing direction
+	int		y_pos;
+	int		x_pos;
+	char	direction;
 }				t_player;
 
 typedef struct s_exit
 {
-	int	y_pos;// Exit Y position
-	int	x_pos;// Exit X position
+	int	y_pos;
+	int	x_pos;
 }				t_exit;
 
 typedef struct s_mlx
 {
-	void	*mlx_ptr;// MLX instance pointer
-	void	*win_ptr;// Window pointer
+	void	*mlx_ptr;
+	void	*win_ptr;
 }				t_mlx;
 
 typedef struct s_game
 {
-	char		*map_path;// Path to map file
-	int			collectibles;// Number of collectibles
-	int			players;// Number of players (should be 1)
-	int			exits;// Number of exits (should be 1)
-	int			map_length;// Map length
-	int			file_descriptor;// Map file descriptor
-	char		**map;// Current game map
-	char		**copied_map;// Copy for pathfinding
-	int			move_count;// Number of moves made
-	int			animation_frame;// This will be used to cycle through frames
+	char		*map_path;
+	int			collectibles;
+	int			players;
+	int			exits;
+	int			map_length;
+	int			file_descriptor;
+	char		**map;
+	char		**copied_map;
+	int			move_count;
+	int			animation_frame;
 	mlx_image_t	*move_text_img;
 	mlx_image_t	*buffer;
-	t_textures	textures;// Game textures
-	t_image		image;// Current image
-	t_player	player;// Player info
-	t_exit		exit;// Exit info
-	t_mlx		mlx;/* MLX instance */
-	t_enemy		*enemies;		/* Dynamic array of enemy patrols */
+	t_textures	textures;
+	t_image		image;
+	t_player	player;
+	t_exit		exit;
+	t_mlx		mlx;
+	t_enemy		*enemies;
 	int			enemy_count;
 }				t_game;
 #endif /* STRUCTS_H */

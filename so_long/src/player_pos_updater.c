@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_pos_updater.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aimaneyousr <aimaneyousr@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 00:16:53 by aimaneyousr       #+#    #+#             */
-/*   Updated: 2025/03/21 00:16:54 by aimaneyousr      ###   ########.fr       */
+/*   Created: 2025/03/21 00:16:53 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/22 00:10:28 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
