@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   enemy_control_helper_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayousr <ayousr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/20 17:55:05 by ayousr            #+#    #+#             */
-/*   Updated: 2025/03/20 17:58:35 by ayousr           ###   ########.fr       */
+/*   Created: 2025/03/16 17:53:42 by ayousr            #+#    #+#             */
+/*   Updated: 2025/03/16 18:03:18 by ayousr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-void	img_destroyer(t_game *game, char *s, char *c)
+int	is_valid_enemy_move(t_game *game, int y, int x)
 {
-	ft_printf("%s%s%s\n", c, s, W);
-	cleanup_game(game);
-	exit(0);
+	if (game->map[y][x] == '1' || game->map[y][x] == 'E'
+		|| game->map[y][x] == 'C')
+		return (0);
+	return (1);
 }
 
-void	ft_game_errors(char *s, t_game *game)
+void	reverse_enemy_direction(t_enemy *enemy)
 {
-	ft_printf("Error\n%s\n", s);
-	cleanup_game(game);
-	exit(EXIT_FAILURE);
-}
-
-int	contains(char *s, char c)
-{
-	while (*s)
-	{
-		if (*s == c)
-			return (1);
-		++s;
-	}
-	return (0);
+	if (enemy->direction == 'l')
+		enemy->direction = 'r';
+	else
+		enemy->direction = 'l';
+	enemy->steps = 0;
 }
